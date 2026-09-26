@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Activity, ArrowRight, ArrowUpRight, Bolt, Camera, Check, CheckCheck, ChevronDown, CircleHelp, Clock3, CloudUpload, Command, FileArchive, FileImage, FileText, FolderOpen, Gauge, Layers3, Link2, Mail, Menu, MessageCircle, Pause, Play, Plus, Search, Settings2, ShieldCheck, Sparkles, Trash2, X, Zap } from 'lucide-react'
 import './styles.css'
+import './readability.css'
 
 type Channel = 'instagram' | 'whatsapp' | 'email' | 'linkedin'
 type Source = 'instagram' | 'whatsapp' | 'custom'
@@ -55,12 +56,12 @@ function App() {
   return <div className="app-shell">
     <aside className={`sidebar ${mobileNav?'open':''}`}>
       <div className="brand"><span className="brand-mark"><Bolt size={19} fill="currentColor"/></span><span>relay<span className="brand-dot">.</span></span><button className="mobile-close" onClick={()=>setMobileNav(false)}><X size={18}/></button></div>
-      <div className="workspace-picker"><div className="workspace-avatar">S</div><div><strong>Sriharsan's space</strong><small>Personal workspace</small></div><ChevronDown size={15}/></div>
+      <div className="workspace-picker"><div className="workspace-avatar">T</div><div><strong>TechNovaHub</strong><small>Team workspace</small></div><ChevronDown size={15}/></div>
       <div className="nav-label">WORKSPACE</div><nav>{nav.map(({label,icon:Icon})=><button key={label} className={`nav-item ${page===label?'selected':''}`} onClick={()=>choose(label)}><Icon size={19} strokeWidth={page===label?2.3:1.8}/>{label}{label==='Automations'&&data?.automations.length?<span className="nav-count">{data.automations.length}</span>:null}</button>)}</nav>
-      <div className="side-bottom"><div className="help-card"><div className="help-icon"><Sparkles size={18}/></div><strong>Make every word count.</strong><p>Create your first keyword flow and put your content on autopilot.</p><button onClick={openNew}>Create a flow <ArrowUpRight size={15}/></button></div><div className="side-footer"><span className="profile-avatar">S</span><div><strong>Sriharsan</strong><small>Workspace owner</small></div><Settings2 size={17}/></div></div>
+      <div className="side-bottom"><div className="help-card"><div className="help-icon"><Sparkles size={18}/></div><strong>Make every word count.</strong><p>Create your first keyword flow and put your content on autopilot.</p><button onClick={openNew}>Create a flow <ArrowUpRight size={15}/></button></div><div className="side-footer"><span className="profile-avatar">T</span><div><strong>TechNovaHub</strong><small>Team workspace</small></div><Settings2 size={17}/></div></div>
     </aside>
     <main className="main">
-      <header className="topbar"><button className="mobile-menu" onClick={()=>setMobileNav(true)}><Menu size={22}/></button><div className="breadcrumbs">Workspace <span>/</span> <strong>{page}</strong></div><div className="top-actions"><span className="system-pill"><span className="live-dot"/> Workspace ready</span><button className="icon-button" title="Help" onClick={()=>choose('Connections')}><CircleHelp size={19}/></button><span className="top-avatar">S</span></div></header>
+      <header className="topbar"><button className="mobile-menu" onClick={()=>setMobileNav(true)}><Menu size={22}/></button><div className="breadcrumbs">TechNovaHub <span>/</span> <strong>{page}</strong></div><div className="top-actions"><span className="system-pill"><span className="live-dot"/> Workspace ready</span><button className="icon-button" title="Help" onClick={()=>choose('Connections')}><CircleHelp size={19}/></button><span className="top-avatar">T</span></div></header>
       <div className="content">
       {loading?<div className="loading">Loading your workspace…</div>:page==='Overview'?<>
         <div className="welcome-row"><div><div className="eyebrow with-line">THE CONTROL ROOM</div><h1>Good things happen<br/><em>on cue.</em></h1><p>Turn a comment or message into an instant, personal delivery.</p></div><button className="btn primary hero-button" onClick={openNew}><Plus size={18}/> New automation <ArrowUpRight size={17}/></button></div>

@@ -33,7 +33,7 @@ const id = () => crypto.randomUUID()
 const all = (sql, ...args) => db.prepare(sql).all(...args)
 const get = (sql, ...args) => db.prepare(sql).get(...args)
 const run = (sql, ...args) => db.prepare(sql).run(...args)
-const publicBase = () => (process.env.PUBLIC_BASE_URL || `http://localhost:${process.env.PORT || 8787}`).replace(/\/$/, '')
+const publicBase = () => (process.env.PUBLIC_BASE_URL || `http://127.0.0.1:${process.env.PORT || 8787}`).replace(/\/$/, '')
 const secret = () => process.env.DOWNLOAD_SECRET || (process.env.NODE_ENV === 'production' ? '' : 'local-development-only')
 
 function secureEqual(a, b) {

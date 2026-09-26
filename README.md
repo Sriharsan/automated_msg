@@ -1,6 +1,6 @@
-# Relay
+# Relay for TechNovaHub
 
-A single-owner workspace for keyword-triggered delivery. A comment or inbound message can match a whole word or phrase inside a sentence, then send a message and a seven-day file link through an available channel.
+A TechNovaHub workspace for keyword-triggered delivery. A comment or inbound message can match a whole word or phrase inside a sentence, then send a message and a seven-day file link through an available channel.
 
 ## What works
 
@@ -14,6 +14,10 @@ A single-owner workspace for keyword-triggered delivery. A comment or inbound me
 
 LinkedIn direct messaging is shown as restricted because ordinary LinkedIn developer access does not include a general automated DM permission. It is deliberately not presented as a connected channel.
 
+## TechNovaHub handoff
+
+The code, dashboard, and automated checks are ready. Live delivery still needs a public HTTPS host and the team's own Meta and email credentials. The manager can configure those values on the host using `.env.example` as a guide; secrets must stay out of GitHub. This version uses one workspace admin token. It does not yet provide separate employee logins or role permissions.
+
 ## Run locally
 
 Requires Node.js 22 or newer.
@@ -24,7 +28,7 @@ cp .env.example .env
 npm run dev
 ```
 
-Open `http://localhost:5173`. The local API runs at `http://localhost:8787`. Without `ADMIN_TOKEN`, development mode binds the API to localhost only. Add credentials to `.env` when ready to connect live channels. Never commit `.env`.
+Open `http://127.0.0.1:5173`. The local API runs at `http://127.0.0.1:8787`. Without `ADMIN_TOKEN`, development mode binds the API to the local computer only. Add credentials to `.env` when ready to connect live channels. Never commit `.env`.
 
 Build and run a single production server:
 
