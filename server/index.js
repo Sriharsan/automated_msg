@@ -219,7 +219,7 @@ app.use('/api', (_req,res) => res.status(404).json({ error:'Not found' }))
 const dist = path.join(root,'dist')
 if (fs.existsSync(dist)) { app.use(express.static(dist)); app.get('/{*path}', (_req,res) => res.sendFile(path.join(dist,'index.html'))) }
 app.use((error,_req,res,_next) => { console.error(error); res.status(error instanceof multer.MulterError ? 400 : 500).json({ error:error.code==='LIMIT_FILE_SIZE' ? 'File must be under 20 MB' : 'Request failed' }) })
-if (process.env.NODE_ENV === 'production' && (!process.env.ADMIN_TOKEN || !process.env.DOWNLOAD_SECRET || !process.env.PUBLIC_BASE_URL)) throw new Error('ADMIN_TOKEN, DOWNLOAD_SECRET and PUBLIC_BASE_URL are required in production')
+if (process.env.NODE_ENV === 'production' && (!process.env.ADMIN_TOKEN || !process.env.DOWNLOAD_SECRET || !process.env.PUBLIC_BASE_URL?.startsWith('https://'))) throw new Error('ADMIN_TOKEN, DOWNLOAD_SECRET and an HTTPS PUBLIC_BASE_URL are required in production')
 app.listen(Number(process.env.PORT || 8787), process.env.ADMIN_TOKEN ? '0.0.0.0' : '127.0.0.1', () => console.log(`Relay API ready on :${process.env.PORT || 8787}`))
 
 export { matches }

@@ -28,10 +28,15 @@ Open `http://localhost:5173`. The local API runs at `http://localhost:8787`. Wit
 
 Build and run a single production server:
 
-```bash
+On PowerShell:
+
+```powershell
 npm run build
-NODE_ENV=production npm start
+$env:NODE_ENV = 'production'
+npm start
 ```
+
+On macOS or Linux, use `NODE_ENV=production npm start` after building.
 
 Production requires `ADMIN_TOKEN`, `DOWNLOAD_SECRET`, and a public HTTPS `PUBLIC_BASE_URL`. Use persistent storage for `data/` and `uploads/` and run one server instance for this SQLite version. Keep these directories private and back them up. The dashboard prompts for `ADMIN_TOKEN` when protected; `INGEST_TOKEN` separately protects custom event ingestion.
 
